@@ -1,5 +1,7 @@
 # github-organization-manager
 
+[![Build Status](https://travis-ci.org/ianchesal/github-organization-manager.svg?branch=master)](https://travis-ci.org/ianchesal/github-organization-manager)
+
 A Python CLI for working with organizations in Github.
 
 ## Use
