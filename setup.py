@@ -5,7 +5,7 @@ setup(
     version='0.1',
     py_modules=['gom'],
     include_package_data=True,
-    python_requires='>=3.8',
+    python_requires='>=3.4',
     install_requires=[
         'click',
         'pygithub',
