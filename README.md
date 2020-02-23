@@ -20,6 +20,14 @@ Now you can use `gom` like so:
 
 It expects you to supply a Github personal access token via the `GOM_GITHUB_TOKEN` environment variable. You can generate one [here](https://github.com/settings/tokens). For permissions the token needs:
 
+## Development
+
+Tests should always be placed in `tests/` and the file names prefixed with `test_` in order to be found by the test runner. The test runner in use is [pytest](https://docs.pytest.org/). You can run all the tests with:
+
+    python setup.py test
+
+This will take care of installing all the necessary test dependencies before excuting the entirety of the test suite for you.
+
 * `repo` (all)
 * `admin:org` (all)
 * `admin:org_hook`

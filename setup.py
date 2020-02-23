@@ -5,6 +5,7 @@ setup(
     version='0.1',
     py_modules=['gom'],
     include_package_data=True,
+    python_requires='>=3.8',
     install_requires=[
         'click',
         'pygithub',
@@ -13,4 +14,6 @@ setup(
         [console_scripts]
         gom=gom:cli
     ''',
+    setup_requires=['pytest-runner'],
+    tests_require=['pytest', 'httpretty'],
 )
