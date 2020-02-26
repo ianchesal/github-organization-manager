@@ -6,15 +6,12 @@ A Python CLI for working with organizations in Github.
 
 ## Use
 
-This is best done in a virtualenv. To configure one, do:
+This is best done in a pipenv-managed virtualenv. To configure one, do:
 
-    pyenv install 3.8.1
-    pyenv virtualenv 3.8.1 gom
-    pyenv activate gom
-
-Then build the `gom` command:
-
-    pip install --editable .
+    brew install pipenv pyenv
+    pipenv --python 3.8
+    pipenv install '-e .'
+    pipenv shell
 
 Now you can use `gom` like so:
 
@@ -29,6 +26,8 @@ Tests should always be placed in `tests/` and the file names prefixed with `test
     python setup.py test
 
 This will take care of installing all the necessary test dependencies before excuting the entirety of the test suite for you.
+
+If you rely on new packages remember to add them to `setup.py` so they're installed as dependencies for everyone else. The list of packages should be minimal. After you add a package to `setup.py` you'll need to regenerate the `Pipfile.lock` file by running `pipenv install '-e .'`. This ensures anyone else gets the packages at the same version as you when they go to work with the code.
 
 * `repo` (all)
 * `admin:org` (all)
