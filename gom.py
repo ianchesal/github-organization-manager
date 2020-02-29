@@ -99,7 +99,8 @@ def check_member(gom, username):
         is_flag=True,
         callback=abort_if_false,
         expose_value=False,
-        prompt='Are you sure you want to add members to the organization?')
+        prompt='Are you sure you want to add members to the organization?',
+        help='Execute command without asking for confirmation')
 @click.argument('usernames', nargs=-1)
 @pass_gom
 def add_members(gom, role, usernames):
@@ -118,7 +119,8 @@ def add_members(gom, role, usernames):
         is_flag=True,
         callback=abort_if_false,
         expose_value=False,
-        prompt='Are you sure you want to remove members from the organization?')
+        prompt='Are you sure you want to remove members from the organization?',
+        help='Execute command without asking for confirmation')
 @click.argument('usernames', nargs=-1)
 @pass_gom
 def remove_members(gom, usernames):
