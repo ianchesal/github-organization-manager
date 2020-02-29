@@ -111,7 +111,8 @@ def add_members(gom, role, usernames):
         if gom.dry_run:
             click.secho('DRY RUN ' + _msg, fg='blue')
         else:
-            gom.get_organization().add_to_members(username, role)
+            user = gom.api.get_user(username)
+            gom.get_organization().add_to_members(user, role)
             click.secho(_msg, fg='green')
 
 @cli.command()
