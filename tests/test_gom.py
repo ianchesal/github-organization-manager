@@ -21,6 +21,7 @@ class MockGithubResponse:
     organization = JsonContent('organization')
     organizations = JsonContent('organizations')
     members = JsonContent('members')
+    user = JsonContent('user')
 
 @pytest.fixture()
 def httpmock():
@@ -35,6 +36,7 @@ def httpmock():
     fake = MockGithubResponse()
     response_mapping = {
             r'/user/orgs?': fake.organizations,
+            r'/users/(\w+?)$': fake.user,
             r'/orgs/(\w+?)$': fake.organization,
             r'/orgs/(\w+?)/members$': fake.members,
             }
@@ -93,21 +95,21 @@ def test_list_members(monkeypatch, httpmock):
     assert result.exit_code == 0
     assert 'octocat' in result.output
 
-def test_add_user_dry_run_works(monkeypatch):
+def test_add_members_dry_run_works(monkeypatch):
     """It aborts when run with --dry-run option"""
     monkeypatch.setenv('GOM_GITHUB_TOKEN', 'some-fake-token-123456')
     monkeypatch.setenv('GOM_ORG', 'github')
     runner = CliRunner();
-    result = runner.invoke(cli, ['--dry-run', 'add-member', 'octodog'], input='y\n')
+    result = runner.invoke(cli, ['--dry-run', 'add-members', 'octodog'], input='y\n')
     assert result.exit_code == 0
     assert 'DRY RUN' in result.output
 
-def test_add_user_aborts_on_no(monkeypatch):
+def test_add_members_aborts_on_no(monkeypatch):
     """It aborts when run with --dry-run option"""
     monkeypatch.setenv('GOM_GITHUB_TOKEN', 'some-fake-token-123456')
     monkeypatch.setenv('GOM_ORG', 'github')
     runner = CliRunner();
-    result = runner.invoke(cli, ['--dry-run', 'add-member', 'octodog'], input='n\n')
-    assert result.exit_code == 0
+    result = runner.invoke(cli, ['--dry-run', 'add-members', 'octodog'], input='n\n')
+    assert result.exit_code == 1
     assert 'Aborted!' in result.output
 
