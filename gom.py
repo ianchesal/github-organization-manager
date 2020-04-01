@@ -140,12 +140,21 @@ def remove_members(gom, usernames):
             click.secho(_msg, fg='green')
             gom.get_organization().remove_from_members(user)
 
+
 @cli.command()
+@click.option(
+    '--repo-type',
+    type=click.Choice(
+        ['all', 'public', 'private', 'forks', 'sources', 'member'],
+        case_sensitive=True
+        ),
+    default='all',
+    help='List only a specific type of repository owned by the organization')
 @pass_gom
-def list_repos(gom):
+def list_repos(gom, repo_type):
     """Lists repositories owned by an organization.
     """
     gom.require_org
-    for repo in gom.get_organization().get_repos():
+    for repo in gom.get_organization().get_repos(type=repo_type):
         print(repo.name)
 
