@@ -1,7 +1,7 @@
 import os
-import sys
 import click
-from github import Github, NamedUser
+from github import Github
+
 
 class GOM(object):
     def __init__(self, org, dry_run):
@@ -11,7 +11,7 @@ class GOM(object):
         self.member = []
 
     def require_org(self):
-        if self.org == None:
+        if self.org is None:
             click.secho("Error: either --org=<org> or GOM_ORG must be supplied", fg='red')
             exit(1)
 
@@ -19,32 +19,38 @@ class GOM(object):
         self.require_org()
         return self.api.get_organization(self.org)
 
+
 pass_gom = click.make_pass_decorator(GOM)
+
 
 def abort_if_false(ctx, param, value):
     if not value:
         ctx.abort()
 
+
 @click.group()
-@click.option('--org',
-        envvar='GOM_ORG',
-        help='Organization name you are operating on.',
-        required=False)
-@click.option('--dry-run/--no-dry-run',
-        help='Only print what would have been done.',
-        required=False,
-        default=False)
-@click.option('--debug',
-        help='Print debug messages to stdout.',
-        required=False,
-        is_flag=True)
+@click.option(
+    '--org',
+    envvar='GOM_ORG',
+    help='Organization name you are operating on.',
+    required=False)
+@click.option(
+    '--dry-run/--no-dry-run',
+    help='Only print what would have been done.',
+    required=False,
+    default=False)
+@click.option(
+    '--debug',
+    help='Print debug messages to stdout.',
+    required=False,
+    is_flag=True)
 @click.version_option('0.1')
 @click.pass_context
 def cli(gom, org, dry_run, debug):
     """gom is a command line tool for interacting with your github
     organizations.
     """
-    if os.environ.get('GOM_GITHUB_TOKEN') == None:
+    if os.environ.get('GOM_GITHUB_TOKEN') is None:
         click.secho("Error: missing required environment variable: GOM_GITHUB_TOKEN", fg='red')
         exit(1)
 
@@ -56,6 +62,7 @@ def cli(gom, org, dry_run, debug):
         from github import enable_console_debug_logging
         enable_console_debug_logging()
 
+
 @cli.command()
 @pass_gom
 def list_organizations(gom):
@@ -64,14 +71,18 @@ def list_organizations(gom):
     for organization in gom.api.get_user().get_orgs():
         print(organization.login)
 
+
 @cli.command()
 @pass_gom
 def list_members(gom):
     """Lists members of an organization.
     """
     gom.require_org
+    print('Memeber ID, Name, Role')
     for member in gom.get_organization().get_members():
-        print(member.login)
+        membership = member.get_organization_membership(gom.org)
+        print(f'{member.login}, {member.name}, {membership.role}')
+
 
 @cli.command()
 @click.argument('username')
@@ -89,18 +100,22 @@ def check_member(gom, username):
         username, gom.org))
     exit(1)
 
+
 @cli.command()
-@click.option('--role',
-        type=click.Choice(['member', 'admin'],
+@click.option(
+    '--role',
+    type=click.Choice(
+        ['member', 'admin'],
         case_sensitive=False),
-        default='member',
-        help='The role to use for the users')
-@click.option('--yes',
-        is_flag=True,
-        callback=abort_if_false,
-        expose_value=False,
-        prompt='Are you sure you want to add members to the organization?',
-        help='Execute command without asking for confirmation')
+    default='member',
+    help='The role to use for the users')
+@click.option(
+    '--yes',
+    is_flag=True,
+    callback=abort_if_false,
+    expose_value=False,
+    prompt='Are you sure you want to add members to the organization?',
+    help='Execute command without asking for confirmation')
 @click.argument('usernames', nargs=-1)
 @pass_gom
 def add_members(gom, role, usernames):
@@ -115,13 +130,15 @@ def add_members(gom, role, usernames):
             gom.get_organization().add_to_members(user, role)
             click.secho(_msg, fg='green')
 
+
 @cli.command()
-@click.option('--yes',
-        is_flag=True,
-        callback=abort_if_false,
-        expose_value=False,
-        prompt='Are you sure you want to remove members from the organization?',
-        help='Execute command without asking for confirmation')
+@click.option(
+    '--yes',
+    is_flag=True,
+    callback=abort_if_false,
+    expose_value=False,
+    prompt='Are you sure you want to remove members from the organization?',
+    help='Execute command without asking for confirmation')
 @click.argument('usernames', nargs=-1)
 @pass_gom
 def remove_members(gom, usernames):
@@ -146,8 +163,7 @@ def remove_members(gom, usernames):
     '--repo-type',
     type=click.Choice(
         ['all', 'public', 'private', 'forks', 'sources', 'member'],
-        case_sensitive=True
-        ),
+        case_sensitive=True),
     default='all',
     help='List only a specific type of repository owned by the organization')
 @pass_gom
@@ -157,4 +173,3 @@ def list_repos(gom, repo_type):
     gom.require_org
     for repo in gom.get_organization().get_repos(type=repo_type):
         print(repo.name)
-
