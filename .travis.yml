@@ -7,7 +7,9 @@ python:
   - "nightly"  # nightly build
 # command to install dependencies
 install:
-  - pip install .
+  - pip install pipenv pytest
+  - pipenv install '-e .'
+  - pytest
 # command to run tests
 script:
   - python setup.py test
