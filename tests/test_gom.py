@@ -35,7 +35,7 @@ def test_list_organizations(monkeypatch):
     runner = CliRunner();
     result = runner.invoke(cli, ['list-organizations'])
     assert result.exit_code == 0
-    assert 'marqeta' in result.output
+    assert 'tinwhiskersband' in result.output
 
 
 @pytest.mark.vcr()

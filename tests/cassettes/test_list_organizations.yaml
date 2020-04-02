@@ -7,7 +7,7 @@ interactions:
       Accept-Encoding:
       - gzip, deflate
       Authorization:
-      - token 151534604f6c562321cc7306dca24f38b1b12b72
+      - DUMMY
       Connection:
       - keep-alive
       User-Agent:
@@ -76,6 +76,314 @@ interactions:
       - '3760'
       X-RateLimit-Reset:
       - '1585801904'
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - DUMMY
+      Connection:
+      - keep-alive
+      User-Agent:
+      - PyGithub/Python
+    method: GET
+    uri: https://api.github.com/user/orgs
+  response:
+    body:
+      string: '{"message":"Bad credentials","documentation_url":"https://developer.github.com/v3"}'
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Content-Length:
+      - '83'
+      Content-Security-Policy:
+      - default-src 'none'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 02 Apr 2020 04:10:52 GMT
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Server:
+      - GitHub.com
+      Status:
+      - 401 Unauthorized
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      Vary:
+      - Accept-Encoding, Accept, X-Requested-With
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-GitHub-Media-Type:
+      - github.v3; format=json
+      X-GitHub-Request-Id:
+      - D2CB:087C:28BCF:2FD2C:5E8565CC
+      X-RateLimit-Limit:
+      - '60'
+      X-RateLimit-Remaining:
+      - '52'
+      X-RateLimit-Reset:
+      - '1585801755'
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 401
+      message: Unauthorized
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - DUMMY
+      Connection:
+      - keep-alive
+      User-Agent:
+      - PyGithub/Python
+    method: GET
+    uri: https://api.github.com/user/orgs
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA63VW0/CMACG4f/Sa3R0MBQSY0xE48UwKhceYkjH6lZ2aO0BHcT/boEt4gZhXbhb
+        CO9Xwp5sb0sQ04CkYACeQsIeicCgBYgPBhA6Pees3QIp9fFk9Qlwr4fZfdTPXu0bhZ5Z6N/Gc282
+        /B6NX+BocXWhS8Vj/cVQSiYGloUYOQ2IDJV3OqWJRXkgrK1jOGZUTOon1jrQp+A5TqVRuSl0GlIa
+        GZXrYPWfCKGwUbkpdJrgxMPcqM2TpbW5+NErTHkxmU4ajP0vtzfRHEnEy7dg/aGw81unBOZTmkr9
+        l6/vorJyGpfzi67+XT4WU06YJHSlCPy0/kgliH9iiQpRPefctvs1RNmjcZC5s6ieqL9T6oLKC3NP
+        RWjMqQiNNRVhA0xFegxLxVYzSnA/pY2Jw5RYjGTGlDhZXXxQnuSozp1et9uxD6MK4Gj20HYXd/VQ
+        7TqvLq9Kaw6tOmFMrjphjK860YBhdeQYIKurzWh29tLMZe2imao43n7OSZJ+hURE+iHvodQvnnc2
+        7DvQ7hy2OczccQTd8d1Cp4ffh9Xj6sosleYuywPGKssDxibLAw1ElieO4bG82Uxje69GmGPaxVG/
+        dN9/Ac3UkfrJCQAA
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Content-Encoding:
+      - gzip
+      Content-Security-Policy:
+      - default-src 'none'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 02 Apr 2020 04:12:02 GMT
+      ETag:
+      - W/"3dfc5b1a4086c1962b1ffe432d959778"
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With
+      X-Accepted-OAuth-Scopes:
+      - admin:org, read:org, repo, user, write:org
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-GitHub-Media-Type:
+      - github.v3; format=json
+      X-GitHub-Request-Id:
+      - D2F2:9B29:1069A2:138CA2:5E856612
+      X-OAuth-Scopes:
+      - admin:enterprise, admin:org, admin:org_hook, repo, workflow
+      X-RateLimit-Limit:
+      - '5000'
+      X-RateLimit-Remaining:
+      - '3333'
+      X-RateLimit-Reset:
+      - '1585801904'
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - DUMMY
+      Connection:
+      - keep-alive
+      User-Agent:
+      - PyGithub/Python
+    method: GET
+    uri: https://api.github.com/user/orgs
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA63VW0/CMACG4f/Sa3R0MBQSY0xE48UwKhceYkjH6lZ2aO0BHcT/boEt4gZhXbhb
+        CO9Xwp5sb0sQ04CkYACeQsIeicCgBYgPBhA6Pees3QIp9fFk9Qlwr4fZfdTPXu0bhZ5Z6N/Gc282
+        /B6NX+BocXWhS8Vj/cVQSiYGloUYOQ2IDJV3OqWJRXkgrK1jOGZUTOon1jrQp+A5TqVRuSl0GlIa
+        GZXrYPWfCKGwUbkpdJrgxMPcqM2TpbW5+NErTHkxmU4ajP0vtzfRHEnEy7dg/aGw81unBOZTmkr9
+        l6/vorJyGpfzi67+XT4WU06YJHSlCPy0/kgliH9iiQpRPefctvs1RNmjcZC5s6ieqL9T6oLKC3NP
+        RWjMqQiNNRVhA0xFegxLxVYzSnA/pY2Jw5RYjGTGlDhZXXxQnuSozp1et9uxD6MK4Gj20HYXd/VQ
+        7TqvLq9Kaw6tOmFMrjphjK860YBhdeQYIKurzWh29tLMZe2imao43n7OSZJ+hURE+iHvodQvnnc2
+        7DvQ7hy2OczccQTd8d1Cp4ffh9Xj6sosleYuywPGKssDxibLAw1ElieO4bG82Uxje69GmGPaxVG/
+        dN9/Ac3UkfrJCQAA
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Content-Encoding:
+      - gzip
+      Content-Security-Policy:
+      - default-src 'none'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 02 Apr 2020 04:13:59 GMT
+      ETag:
+      - W/"3dfc5b1a4086c1962b1ffe432d959778"
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With
+      X-Accepted-OAuth-Scopes:
+      - admin:org, read:org, repo, user, write:org
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-GitHub-Media-Type:
+      - github.v3; format=json
+      X-GitHub-Request-Id:
+      - D306:3DD7:F497E:123C66:5E856687
+      X-OAuth-Scopes:
+      - admin:enterprise, admin:org, admin:org_hook, repo, workflow
+      X-RateLimit-Limit:
+      - '5000'
+      X-RateLimit-Remaining:
+      - '3123'
+      X-RateLimit-Reset:
+      - '1585801904'
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - DUMMY
+      Connection:
+      - keep-alive
+      User-Agent:
+      - PyGithub/Python
+    method: GET
+    uri: https://api.github.com/user/orgs
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA63VW0/CMACG4f/Sa3R0MBQSY0xE48UwKhceYkjH6lZ2aO0BHcT/boEt4gZhXbhb
+        CO9Xwp5sb0sQ04CkYACeQsIeicCgBYgPBhA6Pees3QIp9fFk9Qlwr4fZfdTPXu0bhZ5Z6N/Gc282
+        /B6NX+BocXWhS8Vj/cVQSiYGloUYOQ2IDJV3OqWJRXkgrK1jOGZUTOon1jrQp+A5TqVRuSl0GlIa
+        GZXrYPWfCKGwUbkpdJrgxMPcqM2TpbW5+NErTHkxmU4ajP0vtzfRHEnEy7dg/aGw81unBOZTmkr9
+        l6/vorJyGpfzi67+XT4WU06YJHSlCPy0/kgliH9iiQpRPefctvs1RNmjcZC5s6ieqL9T6oLKC3NP
+        RWjMqQiNNRVhA0xFegxLxVYzSnA/pY2Jw5RYjGTGlDhZXXxQnuSozp1et9uxD6MK4Gj20HYXd/VQ
+        7TqvLq9Kaw6tOmFMrjphjK860YBhdeQYIKurzWh29tLMZe2imao43n7OSZJ+hURE+iHvodQvnnc2
+        7DvQ7hy2OczccQTd8d1Cp4ffh9Xj6sosleYuywPGKssDxibLAw1ElieO4bG82Uxje69GmGPaxVG/
+        dN9/Ac3UkfrJCQAA
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Content-Encoding:
+      - gzip
+      Content-Security-Policy:
+      - default-src 'none'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 02 Apr 2020 04:15:16 GMT
+      ETag:
+      - W/"3dfc5b1a4086c1962b1ffe432d959778"
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With
+      X-Accepted-OAuth-Scopes:
+      - admin:org, read:org, repo, user, write:org
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-GitHub-Media-Type:
+      - github.v3; format=json
+      X-GitHub-Request-Id:
+      - D315:087F:D2E9C:FE964:5E8566D4
+      X-OAuth-Scopes:
+      - admin:enterprise, admin:org, admin:org_hook, repo, workflow
+      X-RateLimit-Limit:
+      - '5000'
+      X-RateLimit-Remaining:
+      - '3110'
+      X-RateLimit-Reset:
+      - '1585801903'
       X-XSS-Protection:
       - 1; mode=block
     status:
