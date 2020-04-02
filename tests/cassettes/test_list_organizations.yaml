@@ -1,0 +1,84 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - token 151534604f6c562321cc7306dca24f38b1b12b72
+      Connection:
+      - keep-alive
+      User-Agent:
+      - PyGithub/Python
+    method: GET
+    uri: https://api.github.com/user/orgs
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA63VW0/CMACG4f/Sa3R0MBQSY0xE48UwKhceYkjH6lZ2aO0BHcT/boEt4gZhXbhb
+        CO9Xwp5sb0sQ04CkYACeQsIeicCgBYgPBhA6Pees3QIp9fFk9Qlwr4fZfdTPXu0bhZ5Z6N/Gc282
+        /B6NX+BocXWhS8Vj/cVQSiYGloUYOQ2IDJV3OqWJRXkgrK1jOGZUTOon1jrQp+A5TqVRuSl0GlIa
+        GZXrYPWfCKGwUbkpdJrgxMPcqM2TpbW5+NErTHkxmU4ajP0vtzfRHEnEy7dg/aGw81unBOZTmkr9
+        l6/vorJyGpfzi67+XT4WU06YJHSlCPy0/kgliH9iiQpRPefctvs1RNmjcZC5s6ieqL9T6oLKC3NP
+        RWjMqQiNNRVhA0xFegxLxVYzSnA/pY2Jw5RYjGTGlDhZXXxQnuSozp1et9uxD6MK4Gj20HYXd/VQ
+        7TqvLq9Kaw6tOmFMrjphjK860YBhdeQYIKurzWh29tLMZe2imao43n7OSZJ+hURE+iHvodQvnnc2
+        7DvQ7hy2OczccQTd8d1Cp4ffh9Xj6sosleYuywPGKssDxibLAw1ElieO4bG82Uxje69GmGPaxVG/
+        dN9/Ac3UkfrJCQAA
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Content-Encoding:
+      - gzip
+      Content-Security-Policy:
+      - default-src 'none'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 02 Apr 2020 03:45:26 GMT
+      ETag:
+      - W/"d9fadb890809d4bfc150bba62f31a488"
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With
+      X-Accepted-OAuth-Scopes:
+      - admin:org, read:org, repo, user, write:org
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - deny
+      X-GitHub-Media-Type:
+      - github.v3; format=json
+      X-GitHub-Request-Id:
+      - D17B:0B59:3A8D1:47390:5E855FD5
+      X-OAuth-Scopes:
+      - admin:enterprise, admin:org, admin:org_hook, repo, workflow
+      X-RateLimit-Limit:
+      - '5000'
+      X-RateLimit-Remaining:
+      - '3760'
+      X-RateLimit-Reset:
+      - '1585801904'
+      X-XSS-Protection:
+      - 1; mode=block
+    status:
+      code: 200
+      message: OK
+version: 1

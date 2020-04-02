@@ -7,6 +7,8 @@ verify_ssl = true
 
 [packages]
 github-organization-manager = {editable = true,path = "."}
+pytest-vcr = "*"
+pytest-cov = "*"
 
 [requires]
 python_version = "3.8"

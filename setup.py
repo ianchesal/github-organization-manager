@@ -15,5 +15,5 @@ setup(
         gom=gom:cli
     ''',
     setup_requires=['pytest-runner'],
-    tests_require=['pytest', 'httpretty'],
+    tests_require=['pytest', 'httpretty', 'pytest-vcr', 'pytest-cov'],
 )
