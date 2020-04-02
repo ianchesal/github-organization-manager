@@ -10,13 +10,7 @@ class GOM(object):
         self.org = org
         self.member = []
 
-    def require_org(self):
-        if self.org is None:
-            click.secho("Error: either --org=<org> or GOM_ORG must be supplied", fg='red')
-            exit(1)
-
     def get_organization(self):
-        self.require_org()
         return self.api.get_organization(self.org)
 
 
@@ -30,11 +24,6 @@ def abort_if_false(ctx, param, value):
 
 @click.group()
 @click.option(
-    '--org',
-    envvar='GOM_ORG',
-    help='Organization name you are operating on.',
-    required=False)
-@click.option(
     '--dry-run/--no-dry-run',
     help='Only print what would have been done.',
     required=False,
@@ -46,7 +35,7 @@ def abort_if_false(ctx, param, value):
     is_flag=True)
 @click.version_option('0.1')
 @click.pass_context
-def cli(gom, org, dry_run, debug):
+def cli(gom, dry_run, debug):
     """gom is a command line tool for interacting with your github
     organizations.
     """
@@ -54,10 +43,14 @@ def cli(gom, org, dry_run, debug):
         click.secho("Error: missing required environment variable: GOM_GITHUB_TOKEN", fg='red')
         exit(1)
 
+    if os.environ.get('GOM_ORG') is None:
+        click.secho("Error: missing required environment variable: GOM_ORG", fg='red')
+        exit(1)
+
     # Create a GOM object and remember it as as the context object. From
     # this point onwards other commands can refer to it by using the
     # @pass_gom decorator.
-    gom.obj = GOM(org, dry_run)
+    gom.obj = GOM(os.environ.get('GOM_ORG'), dry_run)
     if debug:
         from github import enable_console_debug_logging
         enable_console_debug_logging()
@@ -77,7 +70,6 @@ def list_organizations(gom):
 def list_members(gom):
     """Lists members of an organization.
     """
-    gom.require_org
     print('Memeber ID, Name, Role')
     for member in gom.get_organization().get_members():
         membership = member.get_organization_membership(gom.org)
@@ -90,7 +82,6 @@ def list_members(gom):
 def check_member(gom, username):
     """Check if a user is a member of an organization.
     """
-    gom.require_org
     user = gom.api.get_user(username)
     if gom.get_organization().has_in_members(user):
         print('User {} is in organization {}'.format(
@@ -170,6 +161,5 @@ def remove_members(gom, usernames):
 def list_repos(gom, repo_type):
     """Lists repositories owned by an organization.
     """
-    gom.require_org
     for repo in gom.get_organization().get_repos(type=repo_type):
         print(repo.name)
