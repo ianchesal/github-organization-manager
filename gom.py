@@ -1,13 +1,18 @@
 import os
 import click
+import logging
+from rich.logging import RichHandler
 from github import Github
 
 
 class GOM(object):
-    def __init__(self, org, dry_run):
-        self.api = Github(os.environ.get('GOM_GITHUB_TOKEN'))
+    def __init__(self, dry_run):
+        self.org = os.environ.get('GOM_ORG')
+        self.base_url = 'https://api.github.com'
+        if os.environ.get('GOM_BASE_URL'):
+            self.base_url = os.environ.get('GOM_BASE_URL')
+        self.api = Github(base_url=self.base_url, login_or_token=os.environ.get('GOM_GITHUB_TOKEN'))
         self.dry_run = dry_run
-        self.org = org
         self.member = []
 
     def get_organization(self):
@@ -39,21 +44,22 @@ def cli(gom, dry_run, debug):
     """gom is a command line tool for interacting with your github
     organizations.
     """
+    if debug:
+        logging.basicConfig(level=logging.DEBUG, format="%(message)s", datefmt="[%X] ", handlers=[RichHandler()])
+        # Uncomment this if you want to see the raw requests and responses by the PyGithub API
+        # Warning: it produces a TON of debug output
+        # from github import enable_console_debug_logging
+        # enable_console_debug_logging()
+    else:
+        logging.basicConfig(level=logging.INFO, format="%(message)s", datefmt="[%X] ", handlers=[RichHandler()])
     if os.environ.get('GOM_GITHUB_TOKEN') is None:
         click.secho("Error: missing required environment variable: GOM_GITHUB_TOKEN", fg='red')
-        exit(1)
-
-    if os.environ.get('GOM_ORG') is None:
-        click.secho("Error: missing required environment variable: GOM_ORG", fg='red')
         exit(1)
 
     # Create a GOM object and remember it as as the context object. From
     # this point onwards other commands can refer to it by using the
     # @pass_gom decorator.
-    gom.obj = GOM(os.environ.get('GOM_ORG'), dry_run)
-    if debug:
-        from github import enable_console_debug_logging
-        enable_console_debug_logging()
+    gom.obj = GOM(dry_run)
 
 
 @cli.command()
@@ -70,10 +76,10 @@ def list_organizations(gom):
 def list_members(gom):
     """Lists members of an organization.
     """
-    print('Memeber ID, Name, Role')
+    print('Memeber ID, Name, Email, Role, Updated At, Suspended At')
     for member in gom.get_organization().get_members():
         membership = member.get_organization_membership(gom.org)
-        print(f'{member.login}, {member.name}, {membership.role}')
+        print(f'{member.login}, {member.name}, {member.email}, {membership.role}, {member.updated_at}, {member.suspended_at}')
 
 
 @cli.command()

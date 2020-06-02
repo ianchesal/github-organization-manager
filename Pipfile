@@ -4,11 +4,13 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-
-[packages]
-github-organization-manager = {editable = true,path = "."}
 pytest-vcr = "*"
 pytest-cov = "*"
+httpretty = "*"
+
+[packages]
+github-organization-manager = {editable = true, path = "."}
+rich = "*"
 
 [requires]
 python_version = "3.8"
