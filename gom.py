@@ -169,3 +169,27 @@ def list_repos(gom, repo_type):
     """
     for repo in gom.get_organization().get_repos(type=repo_type):
         print(repo.name)
+
+@cli.command()
+@pass_gom
+def list_teams(gom):
+    """Lists teams of an organization.
+    """
+    for team in gom.get_organization().get_teams():
+        print(f'{team.name}')
+
+
+@cli.command()
+@click.argument('team_name')
+@pass_gom
+def list_team_members(gom, team_name):
+    """Lists teams of an organization.
+    """
+    for team in gom.get_organization().get_teams():
+        if team.name == team_name:
+            print(f'Team: {team.name}')
+            print('Memeber ID, Name, Email, Role, Updated At, Suspended At')
+            for member in team.get_members():
+                membership = member.get_organization_membership(gom.org)
+                print(f'{member.login}, {member.name}, {member.email}, {membership.role}, {member.updated_at}, {member.suspended_at}')
+

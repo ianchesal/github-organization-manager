@@ -7,6 +7,7 @@ verify_ssl = true
 pytest-vcr = "*"
 pytest-cov = "*"
 httpretty = "*"
+github-organization-manager = {editable = true, path = "."}
 
 [packages]
 github-organization-manager = {editable = true, path = "."}
